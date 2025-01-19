@@ -15,4 +15,8 @@ env/
 Thumbs.db
 
 # Docs
-Docs
+Docs/
+
+data/
+
+*/*__init__.py
