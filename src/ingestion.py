@@ -83,11 +83,11 @@ def store_embeddings(entities: List[Dict[str, any]], db_path: str = "data/vector
     print("Storing embeddings for updated or new files...")
 
     # Fetch all existing IDs upfront
-    existing_ids = collection.get(ids=[entity["name"] for entity in entities])["ids"]
+    existing_ids = collection.get(ids=[f"{entity['name']}_{entity['file']}_{entity['line']}" for entity in entities])["ids"]
     print(f"Existing IDs in the collection: {existing_ids}")
 
     for entity in entities:
-        entity_id = entity["name"]  # Unique ID based on the function or class name
+        entity_id = f"{entity['name']}_{entity['file']}_{entity['line']}"  # Unique ID based on the function or class name, file and line
         if entity_id in existing_ids:  # Update existing embedding
             print(f"Updating existing embedding for ID: {entity_id}")
             collection.update(
@@ -222,7 +222,7 @@ def ingest_code(base_path: str) -> List[Dict[str, str]]:
     return all_entities
 
 
-def retrieve_entities(query: str, db_path: str = "data/vector_db", top_k: int = 5, distance_threshold: float = 1.5, fuzz_threshold: int = 75) -> List[Dict[str, any]]:
+def retrieve_entities(query: str, db_path: str = "data/vector_db", top_k: int = 5, distance_threshold: float = 2.0, fuzz_threshold: int = 75) -> List[Dict[str, any]]:
     """
     Retrieve the most relevant code entities from the Chroma vector database with fuzzy matching.
 
@@ -257,7 +257,7 @@ def retrieve_entities(query: str, db_path: str = "data/vector_db", top_k: int = 
 
     if not best_matches:
         print("No fuzzy matches found.")
-        return []
+
 
     print(f"Searching for: {query}")
     results = collection.query(

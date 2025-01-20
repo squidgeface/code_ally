@@ -8,7 +8,8 @@ import os
 from chromadb import PersistentClient
 from file_state_tracker import detect_changes, handle_updates
 from ingestion import retrieve_entities
-from query_utils import display_results, display_suggestions
+from query_utils import process_user_query
+from groq_integration import TTTAIModel
 
 def main():
     """
@@ -27,18 +28,19 @@ def main():
 
     # Handle updates
     handle_updates(updates)
-
+    
+    ttt_ai = TTTAIModel()
+    ttt_ai.initialize_model()
+    
     while True:
         query = input("\nEnter a query (or 'exit' to quit): ")
         if query.lower() == "exit":
             break
 
-        results = retrieve_entities(query)
-        if results:
-            display_results(results)
-        else:
-            display_suggestions(query)
-
+        context = process_user_query(query)
+        if context:
+            output = ttt_ai.call_ai_model(context=context, prompt=query)
+            print(output)
 
 if __name__ == "__main__":
     main()

@@ -7,16 +7,20 @@
         "hash": "0069836f96b6b306e3131404ebf991c1a97a59877325afab1969f89576bf69e3",
         "mtime": 1737262465.8399403
     },
+    "src/groq_integration.py": {
+        "hash": "9ce44065db75d2410a1a3a52ca12043d305a294a626bdddcb66761b0572192b3",
+        "mtime": 1736981489.4769728
+    },
     "src/ingestion.py": {
-        "hash": "5a615ff4923c3179211fae5114ce013e2366b51e0a044d3fcfc967bcee181b52",
-        "mtime": 1737264638.8316932
+        "hash": "2b5a9b836013cfc676c878137adb5d6b0e9c7afe0e8042c5903158bee5c3fa7c",
+        "mtime": 1737335324.666139
     },
     "src/main.py": {
-        "hash": "477161f49a93a3b9f3083cbf7b4ecaa474dba5252e6543225b4e9c9c8941db06",
-        "mtime": 1737262108.1195273
+        "hash": "b0b472c01e321598bba40c5ad7057db1734cb4516b70f0ea3d2d07ae37d58158",
+        "mtime": 1737335371.2416463
     },
     "src/query_utils.py": {
-        "hash": "0a38d48ba4e48ee642cf097694d60505f26b9747684e2d5a756325dca702f4ac",
-        "mtime": 1737264765.8285172
+        "hash": "4421b0d5a19c6e1f9eda04a4e3bd3a6e343ed577bd3778e3a3da4b87fc7baf91",
+        "mtime": 1737345044.0467486
     }
 }
